@@ -195,7 +195,7 @@ class CocktailController extends AbstractController
 			],
 			2 => [
 				'id' => 2,
-				'nom' => 'mocktail',
+				'nom' => 'mocktails',
 				'description' => 'Les cocktails modernes sont des créations contemporaines qui reflètent les tendances actuelles en matière de mixologie. Ils peuvent inclure des ingrédients innovants, des techniques de préparation uniques et des présentations artistiques.'
 			],
 			3 => [

@@ -3,19 +3,16 @@
 
 {% block main %}
     <div class="container">
-        <h1 class="title">Catégories de Cocktails</h1>
-        <div class="content">
-            <div class="sidebar">
+        <h1 class="category">Catégories de Cocktail</h1>
+        
                 {% include 'partials/_aside-ad.html.twig' %}
-            </div>
-            <div class="main-content">
+
                 {% for cocktail in cocktails %}
                     <div class="category-cocktail">
                         <h2>{{ cocktail.nom }}</h2>
+                        <img class="image-cocktails" src="{{cocktail.image}}" alt="{{cocktail.nom}}"/>
                         <p>{{ cocktail.description }}</p>
-                {% endfor %} 
                     </div>
-            </div>
-        </div>
+                {% endfor %}
     </div>
 {% endblock main %}       
