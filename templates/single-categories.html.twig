@@ -1,21 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block metaTitle %}Les Cocktails{% endblock metaTitle %}
+
+
 {% block main %}
+
+    {% include 'partials/_aside-ad.html.twig' %}
+    
     <div class="container">
-        <h1 class="title">Catégories de Cocktail</h1>
+        <h1 class="title">Montrer les Catégories de Cocktail</h1>
 
                 {% for categorie in categories %}
                 <article>
-                    <div class="category-list">
-                    <ul>
-                    <li><a href="{{ path('show-categories', { 'id': categorie.id }) }}">
+                    <div class="category-cocktail">
+
                         <h2>{{ categorie.nom }}</h2>
-                    </a></li>
                         <p>{{ categorie.description }}</p>
-                    
+                        <a href="{{ path('show-categories', { 'id': categorie.id }) }}">Voir le détails
+                        </a>
                     </div>
                     </article>
                 {% endfor %}
     </div>
-{% endblock main %}       
+{% endblock main %}
