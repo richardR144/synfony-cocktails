@@ -9,8 +9,6 @@
 					<p>{{ cocktail.description }}</p>
 
 					<a href="{{ path('single-cocktail', {'id' : cocktail.id}) }}">Voir le détail du cocktail</a>
-					<a href="{{ path('list-categories', {'id' : cocktail.id}) }}">Voir les Catégories</a>
-
 				</article>
 
 			{% endfor %}

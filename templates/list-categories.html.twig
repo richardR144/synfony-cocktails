@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
-
+{% block megaTitle %}Les Cocktails{% endblock megaTitle %}
 {% block main %}
     <div class="container">
         <h1 class="category">Catégories de Cocktail</h1>
-        
-                {% include 'partials/_aside-ad.html.twig' %}
 
-                {% for cocktail in cocktails %}
+                {% for categorie in categories %}
+                <article>
                     <div class="category-cocktail">
-                        <h2>{{ cocktail.nom }}</h2>
-                        <img class="image-cocktails" src="{{cocktail.image}}" alt="{{cocktail.nom}}"/>
-                        <p>{{ cocktail.description }}</p>
+                        <h2>{{ categorie.nom }}</h2>
+                        <p>{{ categorie.description }}</p>
                     </div>
+                    </article>
                 {% endfor %}
     </div>
 {% endblock main %}       
