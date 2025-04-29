@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block main %}
+    <div class="container">
+        <h1 class="title">Catégories de Cocktails</h1>
+        <div class="content">
+            <div class="sidebar">
+                {% include 'partials/_aside-ad.html.twig' %}
+            </div>
+            <div class="main-content">
+                {% for cocktail in cocktails %}
+                    <div class="category-cocktail">
+                        <h2>{{ cocktail.nom }}</h2>
+                        <p>{{ cocktail.description }}</p>
+                {% endfor %} 
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}       
