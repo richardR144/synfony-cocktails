@@ -27,32 +27,10 @@ class CocktailController extends AbstractController
     public function displaySingleCocktail($id): Response
     {
 		$cocktailsRepository = new CocktailsRepository();
-		$cocktail = $cocktailsRepository->findAll();
+		$cocktails = $cocktailsRepository->findOneById($id);
         
         return $this->render('single-cocktail.html.twig', [
-            'cocktail' => $cocktail
+            'cocktail' => $cocktails
         ]);
-	}
-		
-		#[Route('/categories', name: 'list-categories')]
-		public function displayListCategories(): Response
-	{
-		$categoriesRepository = new CategoriesRepository();
-		$categories = $categoriesRepository->findAll();
-
-		return $this->render('list-categories.html.twig', [
-			'categories' => $categories
-		]);
-	}
-	
-	#[Route('/categories/{id}', name: 'show-categories')]
-	public function displayShowCategories($id): Response
-	{
-		$categoriesRepository = new CategoriesRepository();
-		$categories = $categoriesRepository->findAll();
-
-		return $this->render('show-categories.html.twig', [
-			'categorie' => $categories[$id]
-		]);
-	}		    
+	}	    
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\CocktailsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,18 +20,14 @@ class CategoryController extends AbstractController
             'categories' => $categories
         ]);
     }
-}
+
 	
-
-
-class ShowCategoryController extends AbstractController
-{
     #[Route('/categories/{$id}', name: 'show-categories')]
     public function displayShowCategories($id): Response
     {
         
 		$categories = new CategoriesRepository();
-		$categories = $categories->findAll();
+		$categories = $categories->findOneById($id);
 
         return $this->render('single-categories.html.twig', [
             'categories' => $categories[$id],

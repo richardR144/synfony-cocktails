@@ -29,4 +29,11 @@ class CategoriesRepository {
 
         return $categories;
     }
+
+    public function findOneById($id) {
+		$categories = $this->findAll();
+		$categories = $categories[$id];
+		
+		return $categories;
+	}
 }
