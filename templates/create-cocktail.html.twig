@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{#Créez une nouvelle page pour l'url "/create-cocktail", qui créé 4 variables (name, description, image, ingredients) avec des valeurs en dur pour l'instant. Utilisez ces variables pour créer une instance la classe cocktail dans une variable $cocktail.
+Faite un dump sur cette variable. Votre navigateur sur l'url /create-cocktail devrait afficher toutes les infos du cocktail#}
+{% include 'partials/_aside-ad.html.twig' %} 
+    
+{% block metaTitle %}Créer un cocktail{% endblock metaTitle %}
+    
+   
+{% block main %}
+
+    <h1>Créer un cocktail</h1>
+    <form action="{{ path('create-cocktail') }}" method="POST">
+        <div>
+            <label for="name">Nom du cocktail</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description" required></textarea>
+        </div>
+        <div>
+            <label for="image">Image</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <div>
+            <label for="ingredients">Ingrédients:(gin, tonic, concombre, citron)</label>
+            <input type="text" id="ingredients" name="ingredients" required>
+        </div>
+        <button type="submit">Créer le cocktail</button>
+    </form>
+
+
+{% endblock %}
+
+{% block footer %}
+    {% include 'partials/_footer.html.twig' %}
+{% endblock %}

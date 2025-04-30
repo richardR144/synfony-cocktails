@@ -21,13 +21,13 @@ class CategoryController extends AbstractController
     }
 
 	
-    #[Route('/categories/{id}', name: 'show-categories')]
-    public function displayShowCategories($id, CategoriesRepository $categoriesRepository): Response
+    #[Route('/categories/{id}', name: 'show-categories')]  //je créais une route pour la page d'accueil "show-categories"
+    public function displayShowCategories($id, CategoriesRepository $categoriesRepository): Response  //je recupère l'id de la catégorie dans l'url et je le passe en paramètre de la fonction
     {
-		$category = $categoriesRepository->findOneById($id);
+		$category = $categoriesRepository->findOneById($id);  //je récupère la catégorie dans le repository en fonction de l'id passé en paramètre
 
-        return $this->render('single-categories.html.twig', [
-            'category' => $category
+        return $this->render('show-categories.html.twig', [  //je renvoie la catégorie à la vue single-categories.html.twig
+            'categories' => $category
         ]);
     }   
 } 
