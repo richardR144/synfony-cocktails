@@ -2,13 +2,13 @@
 
 {#Créez une nouvelle page pour l'url "/create-cocktail", qui créé 4 variables (name, description, image, ingredients) avec des valeurs en dur pour l'instant. Utilisez ces variables pour créer une instance la classe cocktail dans une variable $cocktail.
 Faite un dump sur cette variable. Votre navigateur sur l'url /create-cocktail devrait afficher toutes les infos du cocktail#}
-{% include 'partials/_aside-ad.html.twig' %} 
+
     
 {% block metaTitle %}Créer un cocktail{% endblock metaTitle %}
-    
+  
    
 {% block main %}
-
+{% include 'partials/_aside-ad.html.twig' %}  
     <h1>Créer un cocktail</h1>
     <form action="{{ path('create-cocktail') }}" method="POST">
         <div>

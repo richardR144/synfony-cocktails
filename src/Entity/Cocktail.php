@@ -9,7 +9,7 @@ class Cocktail
     public $name;   
     public $description;
     public $image;
-    public $ingredients = [];
+    public $ingredients;
     public $createdAt;
     public $isPublished;
 
