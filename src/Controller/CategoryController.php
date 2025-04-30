@@ -11,26 +11,23 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends AbstractController
 {
     #[Route('/categories', name: 'list-categories')]
-    public function displayListCategories(): Response
+    public function displayListCategories(CategoriesRepository $categoriesRepository): Response
     {
-        $categories = new CategoriesRepository();
-		$categories = $categories->findAll();
+		$categories = $categoriesRepository->findAll();
 
         return $this->render('list-categories.html.twig', [
-            'categories' => $categories
+            'category' => $categories
         ]);
     }
 
 	
-    #[Route('/categories/{$id}', name: 'show-categories')]
-    public function displayShowCategories($id): Response
+    #[Route('/categories/{id}', name: 'show-categories')]
+    public function displayShowCategories($id, CategoriesRepository $categoriesRepository): Response
     {
-        
-		$categories = new CategoriesRepository();
-		$categories = $categories->findOneById($id);
+		$category = $categoriesRepository->findOneById($id);
 
         return $this->render('single-categories.html.twig', [
-            'categories' => $categories[$id],
+            'category' => $category
         ]);
     }   
 } 
