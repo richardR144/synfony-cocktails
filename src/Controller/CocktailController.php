@@ -38,20 +38,29 @@ class CocktailController extends AbstractController
     #[Route('/create-cocktail', name: 'create-cocktail')]  //je créais une route pour la page d'accueil "create-cocktail"
     public function createCocktail(Request $request): Response  //je créais une route pour la page d'accueil "create-cocktail"
     {
+        
 
         if($request->isMethod('POST'))  //je vérifie si la méthode de la requête est POST
         {
-            $name = $request->request->get('name');  //je récupère le nom du cocktail dans le formulaire
-            $ingredients = $request->request->get('ingredients');  //je récupère les ingrédients du cocktail dans le formulaire
-            $description = $request->request->get('description');  //je récupère la description du cocktail dans le formulaire
-            $image = $request->request->get('image');  //je récupère l'image du cocktail dans le formulaire 
-            $cocktail = new Cocktail($name, $description, $image, $ingredients);  //je crée un nouveau cocktail avec les paramètres passés en paramètre de la fonction
+           $name = $request->request->get('name');  //je récupère le nom du cocktail dans le formulaire
+           $ingredients = $request->request->get('ingredients');  //je récupère les ingrédients du cocktail dans le formulaire
+           $description = $request->request->get('description');  //je récupère la description du cocktail dans le formulaire
+           $image = $request->request->get('image');  //je récupère l'image du cocktail dans le formulaire 
+           $cocktail = new Cocktail($name, $description, $image, $ingredients);  //je crée un nouveau cocktail avec les paramètres passés en paramètre de la fonction
+            
+           $this->addFlash('success', 'Cocktail créé avec succès !');  //j'ajoute un message flash de succès
         }
 
         //dd($cocktail);  //je dump le cocktail pour voir si il est bien créé
+        //enregistre le cocktail en bdd 
     
-        return $this->render('create-cocktail.html.twig'   //je renvoie le cocktail à la vue create-cocktail.html.twig}
-   
+        return $this->render('create-cocktail.html.twig' //je renvoie le cocktail à la vue create-cocktail.html.twig}
     );
 }
+//Dans le controleur de création de cocktail, vérifiez si le formulaire a été envoyé grâce à la classe Request
+//Si oui, récupérez la valeur de chaque champs du form (toujours avec la classe Request)
+//Utilisez ces valeurs pour créer un cocktail (instance de classe Cocktail)
+//Et faites un dump de cocktail avec un die et au submit de form, vous verrez le cocktail créé dans la console, fais avec le code du haut if($request->isMethod('POST'))
+
+
 }
