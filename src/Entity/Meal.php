@@ -1,5 +1,13 @@
 <?php
 
+
+//en utilisant la ligne de commande "php bin/console make:entity", générez un nouvelle entité nommée "Meal"
+//cette entité devra contenir un id (pas besoin de le créer, il est créé automatiquement), un name (string 255), une recette (string 255) et createdAt (datetime)
+//Quand l'entité est correctement générée, générez la requête SQL avec "php bin/console make:migration"
+//Allez vérifier dans le dossier migration que la requête SQL a correctement été générée
+//Executez la requête SQL générée avec  "php bin/console doctrine:migration:migrate"
+//Vérifiez dans phpmyadmin que la table a été créée
+
 namespace App\Entity;
 
 
