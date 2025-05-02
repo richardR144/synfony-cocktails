@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;  //j'importe la classe ORM pour utiliser les an
 #[ORM\Entity(repositoryClass: CocktailsRepository::class)]  //j'indique que c'est une entité de Doctrine et que son repository est CocktailsRepository
 class Cocktail
 {
-    #[ORM\Id]  //j'indique que c'est la clé primaire de la table cocktails
-    #[ORM\GeneratedValue] //j'indique que c'est une valeur générée automatiquement par la base de données
+    #[ORM\Id]  //j'indique que c'est la clé primaire de la table cocktails ce sont des annotations
+    #[ORM\GeneratedValue] //j'indique que c'est une valeur générée automatiquement par la base de données (auto-incrémente)
     #[ORM\Column]  //j'indique que c'est une colonne de la table cocktails
     public $id;
     #[ORM\Column(length: 255)] // j'indique que c'est une colonne de la table cocktails, et que sa longueur est de 255 caractères
@@ -29,7 +29,7 @@ class Cocktail
 
     public function __construct($name, $description, $image, $ingredients)
     {
-        $this->id = 5; // valeur par défaut pour l'id
+        //$this->id = 5; plus la peine de mettre de valeur à l'id car doctrine va le faire automatiquement
         $this->name = $name;
         $this->description = $description;
         $this->image = $image;
@@ -46,3 +46,7 @@ class Cocktail
 //David : 2/ Dans la ligne de commandes, executez la ligne de commandes : "php bin/console doctrine:migrations;migrate"
 //Ca va executer en BDD la requête SQL que vous avez généré à l'étape d'avant. Vérifiez en BDD que la table cocktail existe bien et que les colonnes ont bien été créées 
 //Si ça a fonnctionné, vous devriez voir un nouveau fichier "Versionxxxxxxxxx" dans le dossier migration, contenant une requête SQL
+
+//expliquation par David : Etape 1 : ajoutez, dans l'entité, les annotations sur la classe et sur les propriétés => permet à Doctrine / Symfony de comprendre qu'une table doit être créée pour l'entité et des colonnes doivent être créées pour les propriétés
+//Etape 2 : demandez à Doctrine / Symfony de créer la requête SQL pour créer cette table / colonnes (php bin/console make:migration)
+//Etape 3 : demandez à Doctrine / Symfony d'executer la requêt SQL en BDD (php bin/console doctrine:migration:migrate)
