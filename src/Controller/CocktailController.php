@@ -48,6 +48,8 @@ class CocktailController extends AbstractController
            $image = $request->request->get('image');  //je récupère l'image du cocktail dans le formulaire 
            $cocktail = new Cocktail($name, $description, $image, $ingredients);  //je crée un nouveau cocktail avec les paramètres passés en paramètre de la fonction
             
+            //avant en php, on aurait dû formatter les données de la classe cocktail pour créer la requête SQL insert into pour enregistrer le cocktail en bdd
+            //
            $this->addFlash('success', 'Cocktail créé avec succès !');  //j'ajoute un message flash de succès
         }
 
